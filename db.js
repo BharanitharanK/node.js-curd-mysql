@@ -1,5 +1,4 @@
 var db=require('mysql');
-var typeOf = require('typeof--');
 var data;
 var id,
     name,
