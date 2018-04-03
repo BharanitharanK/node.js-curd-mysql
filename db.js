@@ -1,14 +1,12 @@
-var db = require('mysql');
+var db = require('pg');
 var data;
 var id,
     name,
     department,
     DOB;
+var connectionString="postgres://ksubinrgfjhojy:0ac6cb36a2d63e697a7d7a12a42bbfa24a4ef561969fbb2ff7c86a71adb14f56@ec2-23-21-166-148.compute-1.amazonaws.com:5432/d8cfi3emqkjkvh";
 var con = db.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "root",
-    database: "mydb"
+ connectionString: connectionString
 });
 function dbInsert(id, name, department, DOB) {
     console.log('connected');
