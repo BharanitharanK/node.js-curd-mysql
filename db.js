@@ -12,12 +12,7 @@ var id,
     department,
     DOB;
 function table(){
-    var table="CREATE TABLE IF NOT EXISTS employee(
-                ID INT PRIMARY KEY      NOT NULL,
-                NAME           CHAR(50) NOT NULL,
-                DEPARTMENT     CHAR(50)      NOT NULL,
-                 DOB DATE NOT NULL
-               );";
+    var table="CREATE TABLE IF NOT EXISTS employee(ID INT PRIMARY KEY NOT NULL, NAME  CHAR(50) NOT NULL,DEPARTMENT CHAR(50) NOT NULL, DOB DATE NOT NULL)";
         db.none(table)
         .then(function () {
         if (err) throw err;
