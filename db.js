@@ -20,7 +20,6 @@ function table(){
     })
 }
 function dbInsert(id, name, department, DOB) {
-    table();
     console.log('connected');
     var sql = "insert into employee (id,name,department,DOB) values ($1,$2,$3,$4)";
     db.none(sql, [id, name, department, DOB])
