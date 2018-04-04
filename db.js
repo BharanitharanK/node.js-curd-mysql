@@ -14,7 +14,7 @@ var id,
 function dbInsert(id, name, department, DOB) {
     console.log('connected');
     var sql = "insert into employee (id,name,department,DOB) values ($1,$2,$3,$4)";
-    db.none(sql, [id, name, department, DOB]).
+    db.none(sql, [id, name, department, DOB])
     .then(function () {
         if (err) throw err;
         console.log('inserted');
