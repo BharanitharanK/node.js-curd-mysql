@@ -11,7 +11,21 @@ var id,
     name,
     department,
     DOB;
+function table(){
+    var table="CREATE TABLE IF NOT EXISTS employee(
+                ID INT PRIMARY KEY      NOT NULL,
+                NAME           CHAR(50) NOT NULL,
+                DEPARTMENT     CHAR(50)      NOT NULL,
+                 DOB DATE NOT NULL
+               );";
+        db.none(table)
+        .then(function () {
+        if (err) throw err;
+        console.log('inserted');
+    })
+}
 function dbInsert(id, name, department, DOB) {
+    table();
     console.log('connected');
     var sql = "insert into employee (id,name,department,DOB) values ($1,$2,$3,$4)";
     db.none(sql, [id, name, department, DOB])
