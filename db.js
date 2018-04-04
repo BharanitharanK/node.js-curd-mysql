@@ -15,7 +15,6 @@ function dbInsert(id, name, department, DOB) {
     var sql = "insert into employee (id,name,department,DOB) values ($1,$2,$3,$4)";
     db.none(sql, [id, name, department, DOB])
     .then(function () {
-        if (err) throw err;
         console.log('inserted');
     })
 }
@@ -24,7 +23,6 @@ function getData(callback) {
     var sql = "select * from employee";
     db.any(sql)
     .then (function (data) {
-        if (err) throw err;
         console.log('data extracted');
         result=data;
         callback(null, result);
@@ -34,7 +32,6 @@ function deletebyId(id, callback) {
     var sql = "delete from employee where id=$1"
     db.result(sql, [id])
     .then(function (result) {
-        if (err) throw err;
         console.log('deleted by id');
         callback(null, result);
     })
@@ -43,7 +40,6 @@ function editbyId(id, name, department, DOB, callback) {
     var sql = "update employee set name=$1,department=$2,DOB=$3 where id=$4";
     db.none(sql, [name, department, DOB, id])
     .then(function (result) {
-        if (err) throw err;
         console.log('updated');
         callback(null, result);
     })
