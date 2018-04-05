@@ -59,7 +59,7 @@ io.on('connection',function(socket){
         {
             if(result.name)
             {
-                console.log(result);
+                console.log(result.name);
                 socket.emit('failure',{});
             }
             else
