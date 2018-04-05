@@ -57,8 +57,14 @@ app.post('/edit',function(req,res){
 io.on('connection',function(socket){
      var call=function(err,result)
         {
-            console.log(result.)
-            socket.emit('data',result);
+            if(result.isEmpty())
+            {
+                socket.emit('success',{});
+            }
+            else
+            {
+                socket.emit('failure',{});
+            }
         }
     socket.on('check',function(id){
         console.log(id);
