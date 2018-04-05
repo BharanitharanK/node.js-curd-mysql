@@ -29,11 +29,13 @@
             })
         })
         $(document).ready(function(){
-            var sub=$("#submit").mouseenter.attr("onclick");
+            $("#submit").click(function(){
+                var sub=$("#submit").attr("onclick");
             if(sub=="return false")
             {
                 alert("you entered the wrong values try again");
             }
+            })
         })
     </script>
 </head>
