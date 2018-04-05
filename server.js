@@ -57,6 +57,7 @@ app.post('/edit',function(req,res){
 io.on('connection',function(socket){
      var call=function(err,result)
         {
+            console.log(result.)
             socket.emit('data',result);
         }
     socket.on('check',function(id){
