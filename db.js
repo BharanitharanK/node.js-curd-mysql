@@ -52,8 +52,5 @@ function check(id,callback){
         result=data;
         callback(null,result);
     })
-    .catch(function(error){
-        callback(error,null);
-    })
 }
 module.exports = { dbInsert, getData, deletebyId, editbyId,check };
