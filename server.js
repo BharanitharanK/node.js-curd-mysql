@@ -57,14 +57,14 @@ app.post('/edit',function(req,res){
 io.on('connection',function(socket){
      var call=function(err,result)
         {
-            if(err)
-            {
-                socket.emit('success',{});
-            }
-            if(result)
+            if(result.name)
             {
                 console.log(result);
                 socket.emit('failure',{});
+            }
+            else
+            {
+                socket.emit('success',{});
             }
         }
     socket.on('check',function(id){
