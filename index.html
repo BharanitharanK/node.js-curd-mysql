@@ -16,6 +16,9 @@
      socket.on('failure',function(data){
          console.log('false');
      })
+     socket.on('data',function(data){
+         console.log(data);
+     })
      $(document).ready(function(){
          $("#id").change(function(){
            data=document.getElementById("id").value;
