@@ -28,6 +28,13 @@
                 }
             })
         })
+        $(document).ready(function(){
+            var sub=$("#submit").attr("onclick");
+            if(sub=="return false")
+            {
+                alert("you entered the id which is already present");
+            }
+        })
     </script>
 </head>
 
