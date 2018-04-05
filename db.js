@@ -44,4 +44,16 @@ function editbyId(id, name, department, DOB, callback) {
         callback(null, result);
     })
 }
-module.exports = { dbInsert, getData, deletebyId, editbyId };
+function check(id,callback){
+    var sql = "select * from employee where id = $1";
+    db.any(sql, [id])
+    .then(function (result) {
+        console.log('checking id');
+
+        callback(null,true);
+    })
+    .catch(function(error){
+        callback(error,null);
+    })
+}
+module.exports = { dbInsert, getData, deletebyId, editbyId,check };

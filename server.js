@@ -3,12 +3,14 @@ var bodyParser = require('body-parser');
 var ejs=require('ejs');
 var db=require('./db.js');
 var app=express();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static('./'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
-app.listen(process.env.PORT||8080);
+http.listen(process.env.PORT||8080);
 app.get('/',function(req,res){
    res.sendFile(__dirname+'./index.html');
 });
@@ -51,4 +53,25 @@ app.post('/edit',function(req,res){
         res.redirect('/view');
     }
     db.editbyId(id,name,department,DOB,data);
+})
+io.on('connection',function(socket){
+     var call=function(err,result)
+        {
+            if(err)
+            {
+                socket.emit('success',{});
+            }
+            if(result===true)
+            {
+                socket.emit('failure',{});
+            }
+        }
+    socket.on('check',function(id){
+        console.log(id);
+        db.check(id,call);
+    })
+   
+    socket.on('disconnect',function(){
+
+    });
 })
