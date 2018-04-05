@@ -47,9 +47,9 @@ function editbyId(id, name, department, DOB, callback) {
 function check(id,callback){
     var sql = "select * from employee where id = $1";
     db.any(sql, [id])
-    .then(function (result) {
+    .then(function (data) {
         console.log('checking id');
-
+        result=data;
         callback(null,result);
     })
     .catch(function(error){
