@@ -8,24 +8,26 @@
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script>
-     var socket=io();
-     var data;
-     socket.on('success',function(data){
-         console.log('true');
-     })
-     socket.on('failure',function(data){
-         console.log('false');
-     })
-     $(document).ready(function(){
-         $("#id").change(function(){
-           data=document.getElementById("id").value;
-           if(data)
-           {
-           console.log(data);
-           socket.emit('check',data);
-           }
-         })
-     })
+        var socket = io();
+        var data;
+        socket.on('success', function (data) {
+            $(document).ready(function () {
+                $("#submit").attr("onclick", "return true");
+            })
+
+        })
+        socket.on('failure', function (data) {
+            alert("the employee id is already present in database");
+        })
+        $(document).ready(function () {
+            $("#id").change(function () {
+                data = document.getElementById("id").value;
+                if (data) {
+                    console.log(data);
+                    socket.emit('check', data);
+                }
+            })
+        })
     </script>
 </head>
 
