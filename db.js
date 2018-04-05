@@ -48,10 +48,9 @@ function check(id,callback){
     var sql = "select * from employee where id = $1";
     db.any(sql, [id])
     .then(function (result) {
-        console.log(result);
         console.log('checking id');
 
-        callback(null,true);
+        callback(null,result);
     })
     .catch(function(error){
         callback(error,null);

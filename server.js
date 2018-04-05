@@ -61,8 +61,9 @@ io.on('connection',function(socket){
             {
                 socket.emit('success',{});
             }
-            if(result===true)
+            if(result)
             {
+                console.log(result);
                 socket.emit('failure',{});
             }
         }
